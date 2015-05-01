@@ -95,7 +95,7 @@ class bootstrap{
 
             function editModal(id,num,title,desc){
 
-                var desc = desc.replace('\\\','');
+                // var desc = desc.replace('\\\','');
 
                 $('#editModal').modal('show');
                 $('#editModal #id').attr({

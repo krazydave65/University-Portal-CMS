@@ -170,6 +170,7 @@ elseif ($role=="admin"){
 
       $page->init_modal();
       $page->init_editModal();
+      // $page->addSessionModal();
 
 
       //========= Showing all courses ============
@@ -185,6 +186,25 @@ elseif ($role=="admin"){
          echo "</thead>";
          echo "<tbody>";
              $admin->showAllCourses();
+         echo "</tbody>";
+       echo "</table>";
+       echo "</div>";
+
+
+       echo "<h3>Course Sessions</h3>";
+       echo  "<table class='table table-striped table-bordered table-hover table-condensed'>";
+         echo "<thead>";
+             echo "<tr>";
+                 echo "<th>ID</th>";
+                 echo "<th>Session</th>";
+                 echo "<th>Class</th>";
+                 echo "<th>Faculty Name</th>";
+                 echo "<th>Date/Time</th>";
+                 echo "<th>Edit</th>";
+             echo "</tr>";
+         echo "</thead>";
+         echo "<tbody>";
+             $admin->showAllSessions();
          echo "</tbody>";
        echo "</table>";
        echo "</div>";

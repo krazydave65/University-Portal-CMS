@@ -154,6 +154,37 @@ class admin{
          $this->conn = connect_db();   
      }
 
+     function showAllSessions(){
+         // $query="SELECT course_title FROM _course WHERE _course.course_id = _course_session.course_id";
+         // $class_titles=$this->conn->query($query);
+
+         $query="SELECT _course_session.course_id , _course_session.session , _course_session.instructor , _course_session.date_time, _course.course_title, _course.course_number FROM _course_session , _course WHERE _course_session.course_id = _course.course_id";
+         $result=$this->conn->query($query);
+         while ($row=$result->fetch_assoc()){
+           // echo $row["course_id"],$row["session"],$row["course_number"],$row["course_title"],"</br>","</br>";
+             $id= $row["course_id"];
+             $session=$row["session"];
+             $class_num = $row["course_number"];
+             $class_title = $row["course_title"];
+             $instructor=$row["instructor"];
+             $date=$row["date_time"];
+
+             $class_title = $class_title . " ". $class_num; 
+             
+              echo "<tr>";
+              echo "<td> $id </td>";
+              echo "<td> $session </td>";
+              echo "<td> $class_title </td>";
+              echo "<td> $instructor</td>";
+              echo "<td> $date</td>";
+              echo "<td class ='col-md-2'>
+                      <button type='submit' value='Delete Class' class='btn btn-warning'>Edit</button>
+                      <button type='submit' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
+              echo "</tr>";
+        }
+     }
+
+
      function update_course($id,$num,$title,$des){
         $sql = "UPDATE _course
                 SET course_id = $id, course_number = $num, course_title = '{$title}', description = '{$des}' 
@@ -235,7 +266,8 @@ class admin{
               echo "<td> $num</td>";
               echo "<td> $title</td>";
               echo "<td> $desc </td>";
-              echo "<td>
+              echo "<td class ='col-md-3'>
+                      <button type='submit' onclick='addSessionModal($id)' value='Delete Class' class='btn btn-success'>+ Session</button>
                       <button type='submit' onclick='editModal($id,$num,\"$title\",\"$desc\")' value='Delete Class' class='btn btn-warning'>Edit</button>
                       <button type='submit' onclick='showModal($id,$num,\"$title\")' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
               echo "</tr>";
