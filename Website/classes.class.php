@@ -210,6 +210,14 @@ class admin{
         }
      }
 
+
+     function delete_session($id,$session){
+         $sql = "DELETE FROM _course_session WHERE course_id = $id AND session = $session";
+         $result = $this->conn->query($sql);
+         if ($this->conn->query($sql) === TRUE) {echo "Session has deleted successfully";}
+        else{echo "error: " . $sql . "<br>" . $this->conn->error;}
+     }
+
      function delete_course($id){
         $sql = "DELETE FROM _course WHERE course_id = $id";
         $result = $this->conn->query($sql);

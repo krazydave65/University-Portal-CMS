@@ -134,7 +134,11 @@ class bootstrap{
                 $('#deleteSession #session_num').text(session);
                 $('#deleteSession #title').text(title);
                 $('#deleteSession #instructor').text(instructor);
-                $('#deleteSession #date').text(date);          
+                $('#deleteSession #date').text(date); 
+
+                $('#deleteSession form').attr({
+                    'action' : 'controler.php?id=1&session_id=' + id + '&session_num=' + session
+                });         
               }
             
 
@@ -224,7 +228,7 @@ class bootstrap{
                       <div class='modal-footer'>
                       <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                         <form role='form' action='controler.php?id=1' method='post'>
-                          <button type='submit' name='deleted' class='btn btn-danger'>Delete Session</button>
+                          <button type='submit' name='deleted_session' class='btn btn-danger'>Delete Session</button>
                         </form>
                       </div>
               </div>

@@ -119,6 +119,12 @@ elseif ($role=="admin"){
       echo "Delete course with id = {$id}";
       $admin->delete_course($id);
    }
+   else if (isset($_POST['deleted_session'])) {
+      $id = $_GET['session_id'];
+      $session = $_GET['session_num'];
+      echo "Delete session with id = {$id} and session = {$session}";
+      $admin->delete_session($id, $session);
+   }
 
     
 
