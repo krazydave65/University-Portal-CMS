@@ -155,6 +155,15 @@ elseif ($role=="admin"){
           $date = $_POST['date'];
           $admin->add_session($id,$session,$instructor,$date);
         }
+        if (isset($_POST['submit_edit_session'])) {
+          $id = $_GET['edit'];
+          $session = $_POST['session'];
+          $instructor = $_POST['instructor'];
+          $date = $_POST['date'];
+          $admin->update_session($id,$session,$instructor,$date);
+        }
+
+
 
 
 

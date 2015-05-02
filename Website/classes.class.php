@@ -178,9 +178,26 @@ class admin{
               echo "<td> $instructor</td>";
               echo "<td> $date</td>";
               echo "<td class ='col-md-2'>
-                      <button type='submit' value='Delete Class' class='btn btn-warning'>Edit</button>
+                      <button type='submit' onclick='editSessionModal($id,$session,\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-warning'>Edit</button>
                       <button type='submit' onclick='deleteSessionModal($id,$session,\"$class_title\",\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
               echo "</tr>";
+        }
+     }
+
+
+     function update_session($id,$session,$instructor,$date){
+      $sql = "UPDATE _course_session
+                SET session = $session, instructor = '{$instructor}', date_time = '{$date}' 
+                WHERE course_id = $id AND session = $session";
+
+        $result = $this->conn->query($sql);
+
+        if ($this->conn->query($sql) === TRUE) {
+          echo "record edited successfully";
+        }
+        else
+        {
+          echo "error: " . $sql . "<br>" . $this->conn->error;
         }
      }
 
@@ -284,13 +301,12 @@ class admin{
               echo "<td> $title</td>";
               echo "<td> $desc </td>";
               echo "<td class ='col-md-3'>
-                      <button  onclick='addSessionModal($id)' value='Delete Class' class='btn btn-success'>+ Session</button>
+                      <button  onclick='addSessionModal($id)' value='Delete Class' class='btn btn-success'>+Session</button>
                       <button type='submit' onclick='editModal($id,$num,\"$title\",\"$desc\")' value='Delete Class' class='btn btn-warning'>Edit</button>
                       <button type='submit' onclick='showModal($id,$num,\"$title\")' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
               echo "</tr>";
           }
       } 
-
 }
 
 

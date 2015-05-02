@@ -128,6 +128,28 @@ class bootstrap{
               });
             }
 
+
+
+            function editSessionModal(id,session,instructor,date){
+              $('#edit_session').modal('show');
+              $('#edit_session #session').attr({
+                    'value' : session
+                });
+
+                $('#edit_session #instructor').attr({
+                    'value' : instructor
+                });
+
+                $('#edit_session #date').attr({
+                    'value' : date
+                });
+                $('#edit_session form').attr({
+                    'action' : 'controler.php?id=1&edit=' + id
+                });
+            }
+
+
+
             function deleteSessionModal(id,session,title,instructor,date){
                 $('#deleteSession').modal('show');
 
@@ -180,6 +202,49 @@ class bootstrap{
                           </div>
 
                           <button type='submit' class='btn btn-success' name='submit_addsession'>Add Session</button>
+                        </form>
+
+                      </div>
+
+                      <div class='modal-footer'>
+                      <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                        
+                      </div>
+              </div>
+          </div>
+      </div>
+
+
+       <!--======EDIT SESSION MODAL =============
+          ====================================-->
+        <div id='edit_session' class='modal fade'>
+          <div class='modal-dialog'>
+              <div class='modal-content'>
+                  <div class='modal-header'>
+                      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                      <h4 class='modal-title'>Edit Session</h4>
+                      </div>
+                      <div class='modal-body'>
+                        <h4> Edit this Session</h4>
+                        
+                        <form role='form' action='controler.php?id=1' method='post'>
+
+                          <div class='form-group'>
+                            <label for='email'>Session Number:</label>
+                            <input id='session' value = '' type='number' name='session' class='form-control'  placeholder='Enter Session Number'>
+                          </div>
+
+                          <div class='form-group'>
+                            <label for='pwd'>Instructor:</label>
+                            <input id='instructor' value = '' type='text' name='instructor' class='form-control' placeholder='Enter Instructors Name' >
+                          </div>
+
+                          <div class='form-group'>
+                            <label for='pwd'>Date:</label>
+                            <input id='date' value = '' type='text' name='date' class='form-control' placeholder='Enter Date'>
+                          </div>
+
+                          <button type='submit' class='btn btn-warning' name='submit_edit_session'>Submit Changes</button>
                         </form>
 
                       </div>
@@ -277,6 +342,7 @@ class bootstrap{
               </div>
           </div>
       </div>
+
 
 
 
