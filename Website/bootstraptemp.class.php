@@ -77,7 +77,11 @@ class bootstrap{
 
    function init_jquery(){
     echo "
+
         <script type='text/javascript'>
+
+            //DELETE COURSE MODAL
+
             function showModal(id,num,title){
                 $('#myModal').modal('show');
                 $('#course_id').text(id);
@@ -88,10 +92,7 @@ class bootstrap{
                     'action' : 'controler.php?id=1&delete=' + id
                 });
             }
-        ";
-
-
-    echo "
+     
 
             function editModal(id,num,title,desc){
 
@@ -119,12 +120,123 @@ class bootstrap{
 
             }
 
+
+            function addSessionModal(id){
+              $('#add_session').modal('show');
+              $('#add_session form').attr({
+                'action' : 'controler.php?id=1&addsession=' + id
+              });
+            }
+
+            function deleteSessionModal(id,session,title,instructor,date){
+                $('#deleteSession').modal('show');
+
+                $('#deleteSession #session_num').text(session);
+                $('#deleteSession #title').text(title);
+                $('#deleteSession #instructor').text(instructor);
+                $('#deleteSession #date').text(date);          
+              }
+            
+
         </script>
     ";
    }
 
-   function init_modal(){
+   function init_Modals(){
     echo "
+
+        <!--======ADD SESSION MODAL =============
+        // ====================================
+        -->
+        <div id='add_session' class='modal fade'>
+          <div class='modal-dialog'>
+              <div class='modal-content'>
+                  <div class='modal-header'>
+                      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                      <h4 class='modal-title'>New Session</h4>
+                  </div>
+                      <div class='modal-body'>
+                        <h4>Add New Session</h4>
+                        
+                        <form role='form' action='controler.php?id=1' method='post'>
+
+                          <div class='form-group'>
+                            <label for='email'>Session:</label>
+                            <input id='id' value = '' type='text' name='session' class='form-control'  placeholder='Enter Session Number'>
+                          </div>
+
+                          <div class='form-group'>
+                            <label for='pwd'>Instructor:</label>
+                            <input id='num' value = '' type='text' name='instructor' class='form-control' placeholder='Enter Instructors Name' >
+                          </div>
+
+                          <div class='form-group'>
+                            <label for='pwd'>Date and Time:</label>
+                            <input id='title' value = '' type='text' name='date' class='form-control' placeholder='Enter Date'>
+                          </div>
+
+                          <button type='submit' class='btn btn-success' name='submit_addsession'>Add Session</button>
+                        </form>
+
+                      </div>
+
+                      <div class='modal-footer'>
+                      <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                        
+                      </div>
+              </div>
+          </div>
+      </div>
+
+ 
+
+        <!--======DELETE SESSION MODAL =============
+            ====================================-->
+        <div id='deleteSession' class='modal fade'>
+          <div class='modal-dialog'>
+              <div class='modal-content'>
+                  <div class='modal-header'>
+                      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                      <h4 class='modal-title'>Delete Session</h4>
+                      </div>
+                      <div class='modal-body'>
+                        <h4> Are you sure you want to delete this session?</h4>
+                        
+                        <table class='table table-striped table-bordered table-hover table-condensed'>
+                            <thead>
+                                <th>Session Number</th>
+                                <th>Title</th>
+                                <th>Instructor</th>
+                                <th>Date</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id ='session_num'></td>
+                                    <td id ='title'></td>
+                                    <td id ='instructor'></td>
+                                    <td id ='date'></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                      </div>
+
+                      <div class='modal-footer'>
+                      <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                        <form role='form' action='controler.php?id=1' method='post'>
+                          <button type='submit' name='deleted' class='btn btn-danger'>Delete Session</button>
+                        </form>
+                      </div>
+              </div>
+          </div>
+      </div>
+
+  
+
+
+        <!--======DELETE COURSE MODAL =============
+          ====================================-->
+
         <div id='myModal' class='modal fade'>
           <div class='modal-dialog'>
               <div class='modal-content'>
@@ -162,13 +274,10 @@ class bootstrap{
           </div>
       </div>
 
-  ";
-   }
 
 
-   public function init_editModal(){
-
-    echo "
+        <!--======EDIT COURSE MODAL =============
+          ====================================-->
         <div id='editModal' class='modal fade'>
           <div class='modal-dialog'>
               <div class='modal-content'>

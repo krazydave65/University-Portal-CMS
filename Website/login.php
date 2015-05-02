@@ -56,6 +56,7 @@ elseif ($role=="student"){ //Student Session.
 elseif ($role=="faculty"){  //Faculty Session. 
    session_start();
    $_SESSION['username']=$username;
+   $_SESSION['role']=$role;
    redirect_to("faculty.php");
 }
 

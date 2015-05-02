@@ -142,6 +142,13 @@ elseif ($role=="admin"){
           $des = addslashes($_POST['desc']);
           $admin->update_course($id,$num,$title,$des);
         }
+        if (isset($_POST['submit_addsession'])) {
+          $id = $_GET['addsession'];
+          $session = $_POST['session'];
+          $instructor = $_POST['instructor'];
+          $date = $_POST['date'];
+          $admin->add_session($id,$session,$instructor,$date);
+        }
 
 
 
@@ -168,8 +175,10 @@ elseif ($role=="admin"){
        <?php
 
 
-      $page->init_modal();
-      $page->init_editModal();
+      $page->init_modals();
+      // $page->init_editModal();
+      // $page->addSessionModal();
+      // $page->deleteSessionModal();
 
 
       //========= Showing all courses ============
@@ -185,6 +194,25 @@ elseif ($role=="admin"){
          echo "</thead>";
          echo "<tbody>";
              $admin->showAllCourses();
+         echo "</tbody>";
+       echo "</table>";
+       echo "</div>";
+
+
+       echo "<h3>Course Sessions</h3>";
+       echo  "<table class='table table-striped table-bordered table-hover table-condensed'>";
+         echo "<thead>";
+             echo "<tr>";
+                 echo "<th>ID</th>";
+                 echo "<th>Session</th>";
+                 echo "<th>Class</th>";
+                 echo "<th>Faculty Name</th>";
+                 echo "<th>Date/Time</th>";
+                 echo "<th>Edit</th>";
+             echo "</tr>";
+         echo "</thead>";
+         echo "<tbody>";
+             $admin->showAllSessions();
          echo "</tbody>";
        echo "</table>";
        echo "</div>";
