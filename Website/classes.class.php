@@ -177,9 +177,9 @@ class admin{
               echo "<td> $class_title </td>";
               echo "<td> $instructor</td>";
               echo "<td> $date</td>";
-              echo "<td class ='col-md-2'>
-                      <button type='submit' onclick='editSessionModal($id,$session,\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-warning'>Edit</button>
-                      <button type='submit' onclick='deleteSessionModal($id,$session,\"$class_title\",\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
+              echo "<td >
+                      <button type='submit' onclick='editSessionModal($id,$session,\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></button>
+                      <button type='submit' onclick='deleteSessionModal($id,$session,\"$class_title\",\"$instructor\",\"$date\")' value='Delete Class' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button></td>";
               echo "</tr>";
         }
      }
@@ -300,10 +300,10 @@ class admin{
               echo "<td> $num</td>";
               echo "<td> $title</td>";
               echo "<td> $desc </td>";
-              echo "<td class ='col-md-3'>
+              echo "<td class ='col-md-2'>
                       <button  onclick='addSessionModal($id)' value='Delete Class' class='btn btn-success'>+Session</button>
-                      <button type='submit' onclick='editModal($id,$num,\"$title\",\"$desc\")' value='Delete Class' class='btn btn-warning'>Edit</button>
-                      <button type='submit' onclick='showModal($id,$num,\"$title\")' value='Delete Class' class='btn btn-danger'>Delete</button></td>";
+                      <button type='submit' onclick='editModal($id,$num,\"$title\",\"$desc\")' value='Delete Class' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></button>
+                      <button type='submit' onclick='showModal($id,$num,\"$title\")' value='Delete Class' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button></td>";
               echo "</tr>";
           }
       } 

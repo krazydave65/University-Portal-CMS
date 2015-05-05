@@ -182,21 +182,29 @@ elseif ($role=="admin"){
        $page->init_jquery();
        ?>
 
-            <form action="controler.php?id=2" method="post">
-                  <input type="submit" value="Add Class" class="btn btn-success">
-            </form>
+            
 <!--             <button type="submit" onclick="showModal()" value="Delete Class" class="btn btn-danger">Delete Class</button>
  -->
        <?php
 
 
       $page->init_modals();
-      // $page->init_editModal();
-      // $page->addSessionModal();
-      // $page->deleteSessionModal();
-
+    
 
       //========= Showing all courses ============
+       echo " 
+                <table>
+                  <tr>
+                    <td><h3>Courses</h3></td>
+                    <td>
+                      <form action='controler.php?id=2' method='post'>
+                           <input type='submit' value='Add Class' class='btn btn-success'>
+                      </form>
+                    </td>
+                  </tr>
+                </table>
+            ";
+
        echo  "<table class='table table-striped table-bordered table-hover table-condensed'>";
          echo "<thead>";
              echo "<tr>";
